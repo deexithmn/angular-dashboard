@@ -5,14 +5,14 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + 'angular-dashboard'));
+app.use(express.static(__dirname + '/dist/angular-dashboard'));
 
 app.get('/', function (req, res) {
 
-    res.sendFile(path.join(__dirname + 'angular-dashboard/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/angular-dashboard/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT, process.env.IP, function () {
+app.listen(process.env.PORT || 4201, process.env.IP, function () {
     console.log("Server Started");
 })
