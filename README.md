@@ -5,7 +5,7 @@ FYI: All the charts are mocked data and non of the buttons/routes does any work.
 Will be updating those soon.
 
 Demo of the project can be seen in the below link
-`https://angular-dashboard-dx.herokuapp.com/`
+[Demo](https://angular-dashboard-dx.herokuapp.com/)
 
 ## Development server
 
