@@ -20,7 +20,7 @@ SunsetTheme(Highcharts);
   styleUrls: ['./dashboard-gen.component.scss']
 })
 export class DashboardGenComponent implements OnInit {
-  Highcharts: typeof Highcharts = Highcharts.SeriesColumnOptions;
+  Highcharts: typeof Highcharts = Highcharts;
 
   chartOptions1: Highcharts.Options = {
     chart: {
