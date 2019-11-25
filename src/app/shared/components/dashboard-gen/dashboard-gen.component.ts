@@ -8,12 +8,10 @@ import StockModule from 'highcharts/modules/stock';
 import MapModule from 'highcharts/modules/map';
 import GanttModule from 'highcharts/modules/gantt';
 import ExportingModule from 'highcharts/modules/exporting';
-import SunsetTheme from 'highcharts/themes/sunset.src.js';
 StockModule(Highcharts);
 MapModule(Highcharts);
 GanttModule(Highcharts);
 ExportingModule(Highcharts);
-SunsetTheme(Highcharts);
 @Component({
   selector: 'app-dashboard-gen',
   templateUrl: './dashboard-gen.component.html',
@@ -23,153 +21,147 @@ export class DashboardGenComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
 
   chartOptions1: Highcharts.Options = {
-    chart: {
-      type: 'spline',
-      animation: Highcharts.svg, // don't animate in old IE
-      marginRight: 10,
-      events: {
-        load: function () {
+    title: {
+      text: 'Sample Chart'
+    },
+    subtitle: {
+      text: 'Sample Subtitle'
+    },
 
-          // set up the updating of the chart each second
-          var series = this.series[0];
-          setInterval(function () {
-            var x = (new Date()).getTime(), // current time
-              y = Math.random();
-            series.addPoint([x, y], true, true);
-          }, 1000);
-        }
+    yAxis: {
+      title: {
+        text: 'Number of Employees'
+      }
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+      series: {
+        label: {
+          connectorAllowed: false
+        },
+        pointStart: 2010
       }
     },
 
-    time: {
-      useUTC: false
-    },
-
-    title: {
-      text: 'Live random data'
-    },
-    xAxis: {
-      type: 'datetime',
-      tickPixelInterval: 150
-    },
-    yAxis: {
-      title: {
-        text: 'Value'
-      },
-      plotLines: [{
-        value: 0,
-        width: 1,
-        color: '#808080'
-      }]
-    },
-    tooltip: {
-      headerFormat: '<b>{series.name}</b><br/>',
-      pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
-    },
-    legend: {
-      enabled: false
-    },
-    exporting: {
-      enabled: false
-    },
     series: [{
-      name: 'Random data',
-      data: (function () {
-        // generate an array of random data
-        var data = [],
-          time = (new Date()).getTime(),
-          i;
+      type: 'line',
+      name: 'Installation',
+      data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+      type: 'line',
+      name: 'Manufacturing',
+      data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+      type: 'line',
+      name: 'Sales & Distribution',
+      data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }, {
+      type: 'line',
+      name: 'Project Development',
+      data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+    }, {
+      type: 'line',
+      name: 'Other',
+      data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }],
 
-        for (i = -19; i <= 0; i += 1) {
-          data.push({
-            x: time + i * 1000,
-            y: Math.random()
-          });
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 500
+        },
+        chartOptions: {
+          legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+          }
         }
-        return data;
-      }())
-    }]
+      }]
+    }
   }
   chartOptions2: Highcharts.Options = {
     chart: {
-      type: 'scatter',
-      margin: [70, 50, 60, 80],
-      events: {
-        click: function (e) {
-          // find the clicked values and the series
-          var x = Math.round(e.xAxis[0].value),
-            y = Math.round(e.yAxis[0].value),
-            series = this.series[0];
+      type: 'column'
+    },
 
-          // Add it
-          series.addPoint([x, y]);
+    title: {
+      text: 'Highcharts responsive chart'
+    },
 
-        }
+    subtitle: {
+      text: 'Resize the frame or click buttons to change appearance'
+    },
+
+    legend: {
+      align: 'right',
+      verticalAlign: 'middle',
+      layout: 'vertical'
+    },
+
+    xAxis: {
+      categories: ['Apples', 'Oranges', 'Bananas'],
+      labels: {
+        x: -10
       }
     },
-    title: {
-      text: 'User supplied data'
-    },
-    subtitle: {
-      text: 'Click the plot area to add a point. Click a point to remove it.'
-    },
-    xAxis: {
-      gridLineWidth: 1,
-      minPadding: 0.2,
-      maxPadding: 0.2,
-      maxZoom: 60
-    },
+
     yAxis: {
+      allowDecimals: false,
       title: {
-        text: 'Value'
-      },
-      minPadding: 0.2,
-      maxPadding: 0.2,
-      maxZoom: 60,
-      plotLines: [{
-        value: 0,
-        width: 1,
-        color: '#808080'
-      }]
+        text: 'Amount'
+      }
     },
-    legend: {
-      enabled: false
-    },
-    exporting: {
-      enabled: false
-    },
-    plotOptions: {
-      series: {
-        lineWidth: 1,
-        point: {
-          events: {
-            click: function () {
-              if (this.series.data.length > 1) {
-                this.remove();
-              }
+
+    series: [{
+      type: 'column',
+      name: 'Christmas Eve',
+      data: [1, 4, 3]
+    }, {
+      type: 'column',
+      name: 'Christmas Day before dinner',
+      data: [6, 4, 2]
+    }, {
+      type: 'column',
+      name: 'Christmas Day after dinner',
+      data: [8, 4, 3]
+    }],
+
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 500
+        },
+        chartOptions: {
+          legend: {
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal'
+          },
+          yAxis: {
+            labels: {
+              align: 'left',
+              x: 0,
+              y: -5
+            },
+            title: {
+              text: null
             }
+          },
+          subtitle: {
+            text: null
+          },
+          credits: {
+            enabled: false
           }
         }
-      }
-    },
-    series: [{
-      data: [[20, 20], [80, 80]]
-    }]
-  }
-  chartOptions4: Highcharts.Options = {
-    title: { text: "Highcharts chart" },
-    series: [{
-      type: 'line',
-      data: [11, 2, 3],
-      zones: [{
-        value: 7.2,
-        dashStyle: "dot",
-        color: "red"
       }]
-    }, {
-      type: 'line',
-      data: [5, 6, 7]
-    }]
+    }
   }
   chartOptions3: Highcharts.Options = {
     title: { text: 'Sample Chart with two Data' },
@@ -187,10 +179,27 @@ export class DashboardGenComponent implements OnInit {
       ]
     }]
   }
+  chartOptions4: Highcharts.Options = {
+    title: { text: "Highcharts chart" },
+    series: [{
+      type: 'line',
+      data: [11, 2, 3],
+      zones: [{
+        value: 7.2,
+        dashStyle: "dot",
+        color: "red"
+      }]
+    }, {
+      type: 'line',
+      data: [5, 6, 7]
+    }]
+  }
+
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
+        console.log(matches);
         return [
           { title: 'Mob Sample 1', cols: 1, rows: 1, chart: this.chartOptions1 },
           { title: 'Mob Sample 2', cols: 1, rows: 1, chart: this.chartOptions2 },
