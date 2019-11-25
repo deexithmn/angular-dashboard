@@ -10,7 +10,7 @@
   background: inherit;
 }
 .mat-toolbar{
-  background: #534562
+  background: #3c427c
 }
 .spacer{
   flex: 1 1 auto;
@@ -21,10 +21,10 @@
   z-index: 1;
 }
 
-@media(min-width: 900px){
-
+.link {
+  padding: 10px;
 }
-@media(max-width: 600px){
+@media(max-width: 400px){
   .link{
     display: none;
   }

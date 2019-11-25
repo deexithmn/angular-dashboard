@@ -1,11 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+  <mat-sidenav #drawer fixedInViewPort="false" class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="clicked" ng-click="clicked = !clicked">
+    <mat-toolbar >Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Options1</a>
-      <a mat-list-item routerLink="/">Options2</a>
-      <a mat-list-item routerLink="/"> Options3</a>
+      <a mat-list-item routerLink="/">Info</a>
+      <a mat-list-item routerLink="/">Settings</a>
+      <a mat-list-item routerLink="/"> Sign-Out</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -15,9 +15,15 @@
       </button>
       <span>Angular Dashboard Sample</span>
       <span class="spacer"></span>
-      <a mat-list-item class="link" routerLink="/">Options1</a>
-      <a mat-list-item class="link" routerLink="/">Options2</a>
-      <a mat-list-item class="link" routerLink="/"> Options3</a>
+      <a mat-list-item class="link" routerLink="/"> <i class="material-icons">
+          info
+        </i></a>
+      <a mat-list-item class="link" routerLink="/"><i class="material-icons">
+          settings_applications
+        </i></a>
+      <a mat-list-item class="link" routerLink="/"> <i class="material-icons">
+          power_settings_new
+        </i></a>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content #name></ng-content>
