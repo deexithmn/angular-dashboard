@@ -12,13 +12,13 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardGenComponent } from './components/dashboard-gen/dashboard-gen.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import * as Highcharts from 'highcharts';
 
 
 @NgModule({
   declarations: [
     MainNavComponent,
     DashboardGenComponent,
+    // HighchartsChartComponent
   ],
   imports: [
     CommonModule,
