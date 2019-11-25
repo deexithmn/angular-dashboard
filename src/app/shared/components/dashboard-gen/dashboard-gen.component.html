@@ -4,7 +4,7 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content">
-          <div>
+          <div class="chart-content">
             <highcharts-chart [Highcharts]="Highcharts" [options]="card.chart" style="width: 100%; display: block;">
             </highcharts-chart>
           </div>

@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer fixedInViewPort="false" class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  <mat-sidenav #drawer fixedInViewPort="true" class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="clicked" ng-click="clicked = !clicked">
     <mat-toolbar >Menu</mat-toolbar>
     <mat-nav-list>
